@@ -18,7 +18,7 @@
 #ifndef MAX31856_H
 #define MAX31856_H
 
-#include "bcm2835.h"
+#include "includes.h"
 
 // MAX31856 Registers
 // Register 0x00: CR0
@@ -78,11 +78,21 @@
 #define NO_MAX31856                             10002   // MAX31856 not communicating or not connected
 #define IS_MAX31856_ERROR(x)                    (x == FAULT_OPEN && x <= NO_MAX31856)
 
+//SPI defines
+#define SPI0_CLK								RPI_V2_GPIO_P1_23
+#define SPI0_MOSI								RPI_V2_GPIO_P1_19
+#define SPI0_MIS0								RPI_V2_GPIO_P1_21
+#define SPI0_CS1_CUST							RPI_V2_GPIO_P1_15
+
+
 //Functions
 void InitMAX31856(void);
 void writeRegister(uint8_t registerNum, uint8_t data, uint8_t cs);
 double readThermocouple(uint8_t cs);
 double readJunction(uint8_t cs);
 double verifyMAX31856(uint8_t cs);
+
+long readData();
+void writeByte(uint8_t data);
 
 #endif  // MAX31856_H

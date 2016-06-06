@@ -5,52 +5,68 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
 heatpi	/home/niek/heatpi/code/heatpi/README.md	/^# heatpi$/;"	function	line:1
-reg	/home/niek/heatpi/code/heatpi/MAX31856.c	/^uint8_t reg[NUM_REGISTERS] = {0x00,0x03,0xff,0x7f,0xc0,0x7f,0xff,0x80,0,0,0,0};$/;"	variable	line:5
-main	/home/niek/heatpi/code/heatpi/main.c	/^int main(int argc, char **argv)$/;"	function	line:5	signature:(int argc, char **argv)
-MAX31856_H	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define MAX31856_H$/;"	macro	line:19
-CR0_AUTOMATIC_CONVERSION	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define CR0_AUTOMATIC_CONVERSION /;"	macro	line:25
-CR0_ONE_SHOT	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define CR0_ONE_SHOT /;"	macro	line:26
-CR0_OPEN_CIRCUIT_FAULT_TYPE_K	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define CR0_OPEN_CIRCUIT_FAULT_TYPE_K /;"	macro	line:27
-CR0_COLD_JUNCTION_DISABLED	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define CR0_COLD_JUNCTION_DISABLED /;"	macro	line:28
-CR0_FAULT_INTERRUPT_MODE	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define CR0_FAULT_INTERRUPT_MODE /;"	macro	line:29
-CR0_FAULT_CLEAR	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define CR0_FAULT_CLEAR /;"	macro	line:30
-CR0_NOISE_FILTER_50HZ	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define CR0_NOISE_FILTER_50HZ /;"	macro	line:31
-CR1_AVERAGE_1_SAMPLE	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define CR1_AVERAGE_1_SAMPLE /;"	macro	line:33
-CR1_AVERAGE_2_SAMPLES	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define CR1_AVERAGE_2_SAMPLES /;"	macro	line:34
-CR1_AVERAGE_4_SAMPLES	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define CR1_AVERAGE_4_SAMPLES /;"	macro	line:35
-CR1_AVERAGE_8_SAMPLES	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define CR1_AVERAGE_8_SAMPLES /;"	macro	line:36
-CR1_AVERAGE_16_SAMPLES	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define CR1_AVERAGE_16_SAMPLES /;"	macro	line:37
-CR1_THERMOCOUPLE_TYPE_B	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define CR1_THERMOCOUPLE_TYPE_B /;"	macro	line:38
-CR1_THERMOCOUPLE_TYPE_E	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define CR1_THERMOCOUPLE_TYPE_E /;"	macro	line:39
-CR1_THERMOCOUPLE_TYPE_J	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define CR1_THERMOCOUPLE_TYPE_J /;"	macro	line:40
-CR1_THERMOCOUPLE_TYPE_K	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define CR1_THERMOCOUPLE_TYPE_K /;"	macro	line:41
-CR1_THERMOCOUPLE_TYPE_N	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define CR1_THERMOCOUPLE_TYPE_N /;"	macro	line:42
-CR1_THERMOCOUPLE_TYPE_R	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define CR1_THERMOCOUPLE_TYPE_R /;"	macro	line:43
-CR1_THERMOCOUPLE_TYPE_S	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define CR1_THERMOCOUPLE_TYPE_S /;"	macro	line:44
-CR1_THERMOCOUPLE_TYPE_T	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define CR1_THERMOCOUPLE_TYPE_T /;"	macro	line:45
-CR1_VOLTAGE_MODE_GAIN_8	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define CR1_VOLTAGE_MODE_GAIN_8 /;"	macro	line:46
-CR1_VOLTAGE_MODE_GAIN_32	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define CR1_VOLTAGE_MODE_GAIN_32 /;"	macro	line:47
-MASK_COLD_JUNCTION_HIGH_FAULT	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define MASK_COLD_JUNCTION_HIGH_FAULT /;"	macro	line:49
-MASK_COLD_JUNCTION_LOW_FAULT	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define MASK_COLD_JUNCTION_LOW_FAULT /;"	macro	line:50
-MASK_THERMOCOUPLE_HIGH_FAULT	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define MASK_THERMOCOUPLE_HIGH_FAULT /;"	macro	line:51
-MASK_THERMOCOUPLE_LOW_FAULT	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define MASK_THERMOCOUPLE_LOW_FAULT /;"	macro	line:52
-MASK_VOLTAGE_UNDER_OVER_FAULT	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define MASK_VOLTAGE_UNDER_OVER_FAULT /;"	macro	line:53
-MASK_THERMOCOUPLE_OPEN_FAULT	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define MASK_THERMOCOUPLE_OPEN_FAULT /;"	macro	line:54
-SR_FAULT_COLD_JUNCTION_OUT_OF_RANGE	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define SR_FAULT_COLD_JUNCTION_OUT_OF_RANGE /;"	macro	line:56
-SR_FAULT_THERMOCOUPLE_OUT_OF_RANGE	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define SR_FAULT_THERMOCOUPLE_OUT_OF_RANGE /;"	macro	line:57
-SR_FAULT_COLD_JUNCTION_HIGH	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define SR_FAULT_COLD_JUNCTION_HIGH /;"	macro	line:58
-SR_FAULT_COLD_JUNCTION_LOW	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define SR_FAULT_COLD_JUNCTION_LOW /;"	macro	line:59
-SR_FAULT_THERMOCOUPLE_HIGH	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define SR_FAULT_THERMOCOUPLE_HIGH /;"	macro	line:60
-SR_FAULT_THERMOCOUPLE_LOW	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define SR_FAULT_THERMOCOUPLE_LOW /;"	macro	line:61
-SR_FAULT_UNDER_OVER_VOLTAGE	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define SR_FAULT_UNDER_OVER_VOLTAGE /;"	macro	line:62
-SR_FAULT_OPEN	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define SR_FAULT_OPEN /;"	macro	line:63
-READ_OPERATION	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define READ_OPERATION(/;"	macro	line:66
-WRITE_OPERATION	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define WRITE_OPERATION(/;"	macro	line:67
-REGISTER_CR0	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define REGISTER_CR0 /;"	macro	line:70
-REGISTER_CR1	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define REGISTER_CR1 /;"	macro	line:71
-REGISTER_MASK	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define REGISTER_MASK /;"	macro	line:72
-NUM_REGISTERS	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define NUM_REGISTERS /;"	macro	line:73
-FAULT_OPEN	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define	FAULT_OPEN /;"	macro	line:76
-FAULT_VOLTAGE	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define	FAULT_VOLTAGE /;"	macro	line:77
-NO_MAX31856	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define NO_MAX31856 /;"	macro	line:78
-IS_MAX31856_ERROR	/home/niek/heatpi/code/heatpi/MAX31856.h	/^#define IS_MAX31856_ERROR(/;"	macro	line:79
+MAX31856_H	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define MAX31856_H$/;"	macro	line:19
+CR0_AUTOMATIC_CONVERSION	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define CR0_AUTOMATIC_CONVERSION /;"	macro	line:25
+CR0_ONE_SHOT	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define CR0_ONE_SHOT /;"	macro	line:26
+CR0_OPEN_CIRCUIT_FAULT_TYPE_K	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define CR0_OPEN_CIRCUIT_FAULT_TYPE_K /;"	macro	line:27
+CR0_COLD_JUNCTION_DISABLED	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define CR0_COLD_JUNCTION_DISABLED /;"	macro	line:28
+CR0_FAULT_INTERRUPT_MODE	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define CR0_FAULT_INTERRUPT_MODE /;"	macro	line:29
+CR0_FAULT_CLEAR	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define CR0_FAULT_CLEAR /;"	macro	line:30
+CR0_NOISE_FILTER_50HZ	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define CR0_NOISE_FILTER_50HZ /;"	macro	line:31
+CR1_AVERAGE_1_SAMPLE	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define CR1_AVERAGE_1_SAMPLE /;"	macro	line:33
+CR1_AVERAGE_2_SAMPLES	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define CR1_AVERAGE_2_SAMPLES /;"	macro	line:34
+CR1_AVERAGE_4_SAMPLES	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define CR1_AVERAGE_4_SAMPLES /;"	macro	line:35
+CR1_AVERAGE_8_SAMPLES	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define CR1_AVERAGE_8_SAMPLES /;"	macro	line:36
+CR1_AVERAGE_16_SAMPLES	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define CR1_AVERAGE_16_SAMPLES /;"	macro	line:37
+CR1_THERMOCOUPLE_TYPE_B	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define CR1_THERMOCOUPLE_TYPE_B /;"	macro	line:38
+CR1_THERMOCOUPLE_TYPE_E	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define CR1_THERMOCOUPLE_TYPE_E /;"	macro	line:39
+CR1_THERMOCOUPLE_TYPE_J	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define CR1_THERMOCOUPLE_TYPE_J /;"	macro	line:40
+CR1_THERMOCOUPLE_TYPE_K	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define CR1_THERMOCOUPLE_TYPE_K /;"	macro	line:41
+CR1_THERMOCOUPLE_TYPE_N	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define CR1_THERMOCOUPLE_TYPE_N /;"	macro	line:42
+CR1_THERMOCOUPLE_TYPE_R	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define CR1_THERMOCOUPLE_TYPE_R /;"	macro	line:43
+CR1_THERMOCOUPLE_TYPE_S	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define CR1_THERMOCOUPLE_TYPE_S /;"	macro	line:44
+CR1_THERMOCOUPLE_TYPE_T	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define CR1_THERMOCOUPLE_TYPE_T /;"	macro	line:45
+CR1_VOLTAGE_MODE_GAIN_8	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define CR1_VOLTAGE_MODE_GAIN_8 /;"	macro	line:46
+CR1_VOLTAGE_MODE_GAIN_32	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define CR1_VOLTAGE_MODE_GAIN_32 /;"	macro	line:47
+MASK_COLD_JUNCTION_HIGH_FAULT	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define MASK_COLD_JUNCTION_HIGH_FAULT /;"	macro	line:49
+MASK_COLD_JUNCTION_LOW_FAULT	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define MASK_COLD_JUNCTION_LOW_FAULT /;"	macro	line:50
+MASK_THERMOCOUPLE_HIGH_FAULT	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define MASK_THERMOCOUPLE_HIGH_FAULT /;"	macro	line:51
+MASK_THERMOCOUPLE_LOW_FAULT	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define MASK_THERMOCOUPLE_LOW_FAULT /;"	macro	line:52
+MASK_VOLTAGE_UNDER_OVER_FAULT	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define MASK_VOLTAGE_UNDER_OVER_FAULT /;"	macro	line:53
+MASK_THERMOCOUPLE_OPEN_FAULT	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define MASK_THERMOCOUPLE_OPEN_FAULT /;"	macro	line:54
+SR_FAULT_COLD_JUNCTION_OUT_OF_RANGE	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define SR_FAULT_COLD_JUNCTION_OUT_OF_RANGE /;"	macro	line:56
+SR_FAULT_THERMOCOUPLE_OUT_OF_RANGE	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define SR_FAULT_THERMOCOUPLE_OUT_OF_RANGE /;"	macro	line:57
+SR_FAULT_COLD_JUNCTION_HIGH	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define SR_FAULT_COLD_JUNCTION_HIGH /;"	macro	line:58
+SR_FAULT_COLD_JUNCTION_LOW	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define SR_FAULT_COLD_JUNCTION_LOW /;"	macro	line:59
+SR_FAULT_THERMOCOUPLE_HIGH	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define SR_FAULT_THERMOCOUPLE_HIGH /;"	macro	line:60
+SR_FAULT_THERMOCOUPLE_LOW	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define SR_FAULT_THERMOCOUPLE_LOW /;"	macro	line:61
+SR_FAULT_UNDER_OVER_VOLTAGE	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define SR_FAULT_UNDER_OVER_VOLTAGE /;"	macro	line:62
+SR_FAULT_OPEN	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define SR_FAULT_OPEN /;"	macro	line:63
+READ_OPERATION	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define READ_OPERATION(/;"	macro	line:66
+WRITE_OPERATION	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define WRITE_OPERATION(/;"	macro	line:67
+REGISTER_CR0	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define REGISTER_CR0 /;"	macro	line:70
+REGISTER_CR1	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define REGISTER_CR1 /;"	macro	line:71
+REGISTER_MASK	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define REGISTER_MASK /;"	macro	line:72
+NUM_REGISTERS	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define NUM_REGISTERS /;"	macro	line:73
+FAULT_OPEN	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define	FAULT_OPEN /;"	macro	line:76
+FAULT_VOLTAGE	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define	FAULT_VOLTAGE /;"	macro	line:77
+NO_MAX31856	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define NO_MAX31856 /;"	macro	line:78
+IS_MAX31856_ERROR	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define IS_MAX31856_ERROR(/;"	macro	line:79
+SPI0_CLK	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define SPI0_CLK	/;"	macro	line:82
+SPI0_MOSI	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define SPI0_MOSI	/;"	macro	line:83
+SPI0_MIS0	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define SPI0_MIS0	/;"	macro	line:84
+SPI0_CS1_CUST	/home/niek/heatpi/code/heatpi/lib/MAX31856.h	/^#define SPI0_CS1_CUST	/;"	macro	line:85
+reg	/home/niek/heatpi/code/heatpi/lib/MAX31856.c	/^uint8_t reg[NUM_REGISTERS] = {0x00,0x03,0xff,0x7f,0xc0,0x7f,0xff,0x80,0,0,0,0};$/;"	variable	line:5
+regSave	/home/niek/heatpi/code/heatpi/lib/MAX31856.c	/^uint8_t regSave[NUM_REGISTERS];$/;"	variable	line:6
+InitMAX31856	/home/niek/heatpi/code/heatpi/lib/MAX31856.c	/^void InitMAX31856(void)$/;"	function	line:11	signature:(void)
+writeRegister	/home/niek/heatpi/code/heatpi/lib/MAX31856.c	/^void writeRegister(uint8_t registerNum, uint8_t data, uint8_t cs)$/;"	function	line:40	signature:(uint8_t registerNum, uint8_t data, uint8_t cs)
+readThermocouple	/home/niek/heatpi/code/heatpi/lib/MAX31856.c	/^double readThermocouple(uint8_t cs)$/;"	function	line:73	signature:(uint8_t cs)
+readJunction	/home/niek/heatpi/code/heatpi/lib/MAX31856.c	/^double readJunction(uint8_t cs)$/;"	function	line:128	signature:(uint8_t cs)
+verifyMAX31856	/home/niek/heatpi/code/heatpi/lib/MAX31856.c	/^double verifyMAX31856(uint8_t cs)$/;"	function	line:188	signature:(uint8_t cs)
+readData	/home/niek/heatpi/code/heatpi/lib/MAX31856.c	/^long readData()$/;"	function	line:244
+writeByte	/home/niek/heatpi/code/heatpi/lib/MAX31856.c	/^void writeByte(uint8_t data)$/;"	function	line:269	signature:(uint8_t data)
+CR0_INIT	/home/niek/heatpi/code/heatpi/src/main.c	/^#define CR0_INIT /;"	macro	line:6	file:
+CR1_INIT	/home/niek/heatpi/code/heatpi/src/main.c	/^#define CR1_INIT /;"	macro	line:7	file:
+MASK_INIT	/home/niek/heatpi/code/heatpi/src/main.c	/^#define MASK_INIT /;"	macro	line:8	file:
+main	/home/niek/heatpi/code/heatpi/src/main.c	/^int main(int argc, char **argv)$/;"	function	line:12	signature:(int argc, char **argv)
+printTemperature	/home/niek/heatpi/code/heatpi/src/main.c	/^void printTemperature(double temperature) {$/;"	function	line:51	signature:(double temperature)
