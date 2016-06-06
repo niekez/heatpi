@@ -12,21 +12,18 @@ void InitMAX31856(void)
 {
 	uint8_t i = 0;
 
-	// bcm2835_spi_setBitOrder(BCM2835_SPI_BIT_ORDER_MSBFIRST);      // The default
-    // bcm2835_spi_setDataMode(BCM2835_SPI_MODE0);                   // The default
-    // bcm2835_spi_setClockDivider(BCM2835_SPI_CLOCK_DIVIDER_65536); // The default
-    // bcm2835_spi_chipSelect(BCM2835_SPI_CS_NONE);                  // Set to none, handling it ourselfs
-    // bcm2835_spi_setChipSelectPolarity(BCM2835_SPI_CS0, LOW);      // the default
+	bcm2835_spi_setBitOrder(BCM2835_SPI_BIT_ORDER_MSBFIRST);	// The default
+    bcm2835_spi_setDataMode(BCM2835_SPI_MODE0);					// The default
+    bcm2835_spi_setClockDivider(BCM2835_SPI_CLOCK_DIVIDER_64);	//period of 256ns
+    bcm2835_spi_chipSelect(BCM2835_SPI_CS_NONE);				// Set to none, handling it ourselfs
+    bcm2835_spi_setChipSelectPolarity(BCM2835_SPI_CS0, LOW);	// chipsel pol is low
 
-	bcm2835_gpio_write(RPI_V2_GPIO_P1_22, HIGH);
-	bcm2835_gpio_fsel(SPI0_CLK, BCM2835_GPIO_FSEL_OUTP);
-	bcm2835_gpio_fsel(SPI0_MOSI, BCM2835_GPIO_FSEL_OUTP);
-	bcm2835_gpio_fsel(SPI0_MIS0, BCM2835_GPIO_FSEL_INPT);
+	//custom chip select as output and level high
+	bcm2835_gpio_write(SPI0_CS1_CUST, HIGH);
 	bcm2835_gpio_fsel(SPI0_CS1_CUST, BCM2835_GPIO_FSEL_OUTP);
 
     //pull up on data in for error handling
-    bcm2835_gpio_set_pud(RPI_V2_GPIO_P1_21, BCM2835_GPIO_PUD_UP);
-	bcm2835_gpio_write(RPI_V2_GPIO_P1_22, HIGH);
+    bcm2835_gpio_set_pud(SPI0_MIS0, BCM2835_GPIO_PUD_UP);
 
     //init register state saved
     for(i=0; i<NUM_REGISTERS; i++){
@@ -74,7 +71,6 @@ double readThermocouple(uint8_t cs)
 {
     double temperature;
     long data;
-	char operate;
 
     // Select the MAX31856 chip
     bcm2835_gpio_write(cs, LOW);
@@ -193,10 +189,6 @@ double verifyMAX31856(uint8_t cs)
     // Select the MAX31856 chip
     bcm2835_gpio_write(cs, LOW);
 
-    //transfer read operation and receive data, cast addres of long int function
-	// operate = READ_OPERATION(0);
-    // bcm2835_spi_transfernb(&operate,(char*)&data,4);
-
 	// Read data starting with register 0
 	writeByte(READ_OPERATION(0));
 
@@ -222,8 +214,6 @@ double verifyMAX31856(uint8_t cs)
 
     // Start writing from register 0
 	writeByte(WRITE_OPERATION(0));
-	// operate = WRITE_OPERATION(0);
-    // bcm2835_spi_writenb(&operate, 1);
 
     // Write the register values
 	for (int i=0; i< NUM_REGISTERS; i++)
@@ -241,27 +231,10 @@ double verifyMAX31856(uint8_t cs)
 
 // Read in 32 bits of data from MAX31856 chip. Minimum clock pulse width is 100 ns
 // so no delay is required between signal toggles.
-long readData()
+long readData(void)
 {
-    long data = 0;
-    unsigned long bitMask = 0x80000000;
-
-    // Shift in 32 bits of data
-    while (bitMask)
-    {
-        bcm2835_gpio_write(SPI0_CLK, LOW);
-		bcm2835_delayMicroseconds(1);
-
-        // Store the data bit
-        if (bcm2835_gpio_lev(SPI0_MIS0))
-            data += bitMask;
-
-        bcm2835_gpio_write(SPI0_CLK, HIGH);
-		bcm2835_delayMicroseconds(1);
-
-        bitMask >>= 1;
-    }
-
+	uint32_t data = 0xFFFFFFFF;
+	bcm2835_spi_transfernb((char*)&data, 4)
     return(data);
 }
 
@@ -270,18 +243,5 @@ long readData()
 // so no delay is required between signal toggles.
 void writeByte(uint8_t data)
 {
-    uint8_t bitMask = 0x80;
-
-    // Shift out 8 bits of data
-    while (bitMask)
-    {
-        // Write out the data bit.  Has to be held for 35ns, so no delay required
-        bcm2835_gpio_write(SPI0_MOSI, data & bitMask? HIGH: LOW);
-		bcm2835_delayMicroseconds(1);
-        bcm2835_gpio_write(SPI0_CLK, LOW);
-		bcm2835_delayMicroseconds(1);
-        bcm2835_gpio_write(SPI0_CLK, HIGH);
-
-        bitMask >>= 1;
-    }
+    bcm2835_spi_transfer(data);
 }

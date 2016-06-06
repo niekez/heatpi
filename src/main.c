@@ -21,6 +21,12 @@ int main(int argc, char **argv)
 	 return 1;
    }
 
+   if (!bcm2835_spi_begin())
+    {
+      printf("bcm2835_spi_begin failedg. Are you running as root??\n");
+      return 1;
+    }
+
 	InitMAX31856();
 
 	// Initializing the MAX31855's registers
