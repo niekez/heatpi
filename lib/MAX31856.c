@@ -49,12 +49,6 @@ void writeRegister(uint8_t registerNum, uint8_t data, uint8_t cs)
 	// Write the register value
 	writeByte(data);
 
-	// // Write the register number, with the MSB set to indicate a write
-	// bcm2835_spi_transfer(WRITE_OPERATION(registerNum));
-	//
-    // // Write the register value
-	// bcm2835_spi_transfer(data);
-
     // Deselect MAX31856 chip
 	bcm2835_gpio_write(cs, HIGH);
 
@@ -134,10 +128,6 @@ double readJunction(uint8_t cs)
 	writeByte(READ_OPERATION(8));
 	// Read 4 registers
 	data = readData();
-
-    // //transfer read operation and receive data, cast addres of long int function
-	// operate  = READ_OPERATION(8);
-    // bcm2835_spi_transfernb(&operate,(char*)&data,4);
 
     // Deselect MAX31856 chip
     bcm2835_gpio_write(cs, HIGH);
@@ -234,7 +224,7 @@ double verifyMAX31856(uint8_t cs)
 long readData(void)
 {
 	uint32_t data = 0xFFFFFFFF;
-	bcm2835_spi_transfernb((char*)&data, 4)
+	bcm2835_spi_transfern((char*)&data, 4)
     return(data);
 }
 
