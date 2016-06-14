@@ -10,8 +10,6 @@ uint8_t regSave[NUM_REGISTERS];
 // from the MAX31856 are not used in this library.
 void InitMAX31856(void)
 {
-	uint8_t i = 0;
-
 	bcm2835_spi_setBitOrder(BCM2835_SPI_BIT_ORDER_MSBFIRST);	// The default
     bcm2835_spi_setDataMode(BCM2835_SPI_MODE1);					// The default
     bcm2835_spi_setClockDivider(BCM2835_SPI_CLOCK_DIVIDER_256);	//period of 256ns
@@ -22,16 +20,22 @@ void InitMAX31856(void)
 
 	//custom chip select as output and level high
 	bcm2835_gpio_fsel(SPI0_CS1_CUST, BCM2835_GPIO_FSEL_OUTP);
-	bcm2835_gpio_set_pud(SPI0_CS1_CUST, BCM2835_GPIO_PUD_UP);
+	//bcm2835_gpio_set_pud(SPI0_CS1_CUST, BCM2835_GPIO_PUD_UP);
 	bcm2835_gpio_write(SPI0_CS1_CUST, HIGH);
 
     //pull up on data in for error handling
     //bcm2835_gpio_set_pud(SPI0_MIS0, BCM2835_GPIO_PUD_UP);
 
     //init register state saved
-    for(i=0; i<NUM_REGISTERS; i++){
+    for(uint8_t i=0; i<NUM_REGISTERS; i++){
     	regSave[i] = reg[i];
     }
+
+	// Initializing the MAX31855's registers
+	writeRegister(REGISTER_CR0, CR0_INIT, SPI0_CS1_CUST);
+	writeRegister(REGISTER_CR1, CR1_INIT, SPI0_CS1_CUST);
+	writeRegister(REGISTER_MASK, MASK_INIT, SPI0_CS1_CUST);
+
 }
 
 // Write the given data to the MAX31856 register
@@ -94,8 +98,7 @@ double readThermocouple(uint8_t cs)
         return NO_MAX31856;
 
 	// Was there an error?
-	if (data & SR_FAULT_OPEN)
-		temperature = FAULT_OPEN;
+	if (data & SR_FAULT_OPEN) temperature = FAULT_OPEN;
 	else if (data & SR_FAULT_UNDER_OVER_VOLTAGE)
 		temperature = FAULT_VOLTAGE;
 	else{
@@ -161,6 +164,7 @@ double readJunction(uint8_t cs)
 
     // Add the temperature offset to the temperature
     temperature = data + temperatureOffset;
+	//temperature = temperatureOffset;
 
     // Convert to Celsius
     temperature *= 0.015625;
@@ -221,8 +225,10 @@ double verifyMAX31856(uint8_t cs)
 // so no delay is required between signal toggles.
 long readData(void)
 {
-	uint32_t data = 0xFFFFFFFF;
-	bcm2835_spi_transfern((char*)&data, 4);
+	uint32_t data = 0;
+	for (uint8_t i = 3; i < 4; i--) {
+		data+=(bcm2835_spi_transfer(0xFF)<<(8*i));
+	}
     return(data);
 }
 
