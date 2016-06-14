@@ -13,25 +13,26 @@ void InitMAX31856(void)
 	uint8_t i = 0;
 
 	bcm2835_spi_setBitOrder(BCM2835_SPI_BIT_ORDER_MSBFIRST);	// The default
-    bcm2835_spi_setDataMode(BCM2835_SPI_MODE0);					// The default
-    bcm2835_spi_setClockDivider(BCM2835_SPI_CLOCK_DIVIDER_64);	//period of 256ns
-    bcm2835_spi_chipSelect(BCM2835_SPI_CS_NONE);				// Set to none, handling it ourselfs
+    bcm2835_spi_setDataMode(BCM2835_SPI_MODE1);					// The default
+    bcm2835_spi_setClockDivider(BCM2835_SPI_CLOCK_DIVIDER_256);	//period of 256ns
+	//bcm2835_spi_setClockDivider(BCM2835_SPI_CLOCK_DIVIDER_65536);
+    // bcm2835_spi_chipSelect(BCM2835_SPI_CS_NONE);				// Set to none, handling it ourselfs
+    bcm2835_spi_chipSelect(BCM2835_SPI_CS0);				// Set to none, handling it ourselfs
     bcm2835_spi_setChipSelectPolarity(BCM2835_SPI_CS0, LOW);	// chipsel pol is low
 
 	//custom chip select as output and level high
-	bcm2835_gpio_write(SPI0_CS1_CUST, HIGH);
 	bcm2835_gpio_fsel(SPI0_CS1_CUST, BCM2835_GPIO_FSEL_OUTP);
+	bcm2835_gpio_set_pud(SPI0_CS1_CUST, BCM2835_GPIO_PUD_UP);
+	bcm2835_gpio_write(SPI0_CS1_CUST, HIGH);
 
     //pull up on data in for error handling
-    bcm2835_gpio_set_pud(SPI0_MIS0, BCM2835_GPIO_PUD_UP);
+    //bcm2835_gpio_set_pud(SPI0_MIS0, BCM2835_GPIO_PUD_UP);
 
     //init register state saved
     for(i=0; i<NUM_REGISTERS; i++){
     	regSave[i] = reg[i];
     }
-
 }
-
 
 // Write the given data to the MAX31856 register
 void writeRegister(uint8_t registerNum, uint8_t data, uint8_t cs)
@@ -107,7 +108,7 @@ double readThermocouple(uint8_t cs)
 		temperature = (double) data * 0.0078125;
 	}
 
-    // Return the temperature
+    //Return the temperature
     return (temperature);
 }
 
@@ -174,7 +175,6 @@ double readJunction(uint8_t cs)
 double verifyMAX31856(uint8_t cs)
 {
     long data, reg;
-	char operate;
 
     // Select the MAX31856 chip
     bcm2835_gpio_write(cs, LOW);
@@ -188,10 +188,10 @@ double verifyMAX31856(uint8_t cs)
 	// Deselect MAX31856 chip
 	bcm2835_gpio_write(cs, HIGH);
 
-    // If there is no communication from the IC then data will be all 1's because
-    // of the internal pullup on the data line (INPUT_PULLUP)
-    if (data == 0xFFFFFFFF)
-        return NO_MAX31856;
+    // // If there is no communication from the IC then data will be all 1's because
+    // // of the internal pullup on the data line (INPUT_PULLUP)
+    // if (data == 0xFFFFFFFF)
+    //     return NO_MAX31856;
 
     // Are the registers set to their correct values?
     reg = ((long)regSave[0]<<24) + ((long)regSave[1]<<16) + ((long)regSave[2]<<8) + regSave[3];
@@ -209,8 +209,6 @@ double verifyMAX31856(uint8_t cs)
 	for (int i=0; i< NUM_REGISTERS; i++)
         writeByte(regSave[i]);
 
-    //bcm2835_spi_writenb(regSave, NUM_REGISTERS);
-
     // Deselect MAX31856 chip
     bcm2835_gpio_write(cs, HIGH);
 
@@ -224,14 +222,15 @@ double verifyMAX31856(uint8_t cs)
 long readData(void)
 {
 	uint32_t data = 0xFFFFFFFF;
-	bcm2835_spi_transfern((char*)&data, 4)
+	bcm2835_spi_transfern((char*)&data, 4);
     return(data);
 }
 
 
 // Write out 8 bits of data to the MAX31856 chip. Minimum clock pulse width is 100 ns
 // so no delay is required between signal toggles.
-void writeByte(uint8_t data)
+uint8_t writeByte(uint8_t data)
 {
-    bcm2835_spi_transfer(data);
+    data = bcm2835_spi_transfer(data);
+	return data;
 }

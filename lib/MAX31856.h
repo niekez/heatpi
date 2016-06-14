@@ -67,9 +67,9 @@
 #define WRITE_OPERATION(x)                      (x | 0x80)
 
 // Register numbers
-#define REGISTER_CR0                            0
-#define REGISTER_CR1                            1
-#define REGISTER_MASK                           2
+#define REGISTER_CR0                            0x00
+#define REGISTER_CR1                            0x01
+#define REGISTER_MASK                           0x02
 #define NUM_REGISTERS                           12      // (read/write registers)
 
 // Errors
@@ -93,6 +93,6 @@ double readJunction(uint8_t cs);
 double verifyMAX31856(uint8_t cs);
 
 long readData();
-void writeByte(uint8_t data);
+uint8_t writeByte(uint8_t data);
 
 #endif  // MAX31856_H
